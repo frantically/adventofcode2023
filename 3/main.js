@@ -47,14 +47,9 @@ for(number of numbers) {
             gearsToNumbers[`${row}_${col}`] = numbersForGear
         }
         numbersForGear.push(number)
-        // console.log("GEAR FOR:")
-        // console.log(number)
     }
 }
 part2 = Object.values(gearsToNumbers).map(parts => parts.length == 2 ? parts[0] * parts[1] : 0)
     .reduce((a, part) => a + part, 0)
 
 console.log(`Part 2: ${part2}`)
-
-// console.log(part2)
-// console.log(JSON.stringify(gearsToNumbers, null, 2))
