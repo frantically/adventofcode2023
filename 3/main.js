@@ -11,7 +11,6 @@ function partSymbol(num) {
     maxCol = Math.min(start+len, grid[0].length-1)
     for(i=minRow;i<=maxRow;i++) {
         for(j=minCol;j<=maxCol;j++) {
-            // console.log(gridChars[i][j])
             symbol = gridChars[i][j].match(/[^0-9\.]/)
             if(symbol != null) {
                 return [symbol, i, j]
