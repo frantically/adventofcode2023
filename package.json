@@ -4,7 +4,7 @@
   "description": "",
   "main": "3/main.js",
   "scripts": {
-    "start": "node 3/main.js",
+    "start": "cd 4 && node main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
