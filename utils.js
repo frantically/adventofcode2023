@@ -9,7 +9,12 @@ function printGrid(grid) {
     grid.forEach(row => console.log(row.join("")))
 }
 
+function extractNumbersFromString(str) {
+    return Array.from(str.matchAll(/[0-9]+/g)).map(m => parseInt(m[0]))
+}
+
 module.exports = {
     fileToArray: fileToArray,
-    printGrid: printGrid
+    printGrid: printGrid,
+    extractNumbersFromString: extractNumbersFromString
 }
