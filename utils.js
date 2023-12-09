@@ -10,7 +10,7 @@ function printGrid(grid) {
 }
 
 function extractNumbersFromString(str) {
-    return Array.from(str.matchAll(/[0-9]+/g)).map(m => parseInt(m[0]))
+    return Array.from(str.matchAll(/[-0-9]+/g)).map(m => parseInt(m[0]))
 }
 
 module.exports = {
