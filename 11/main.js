@@ -49,9 +49,6 @@ function calculateTotalDistance(galaxies, expansionRatio) {
             totalDistance += Math.abs(galaxies[j][1]-galaxies[i][1]) + Math.abs(galaxies[j][0]-galaxies[i][0])
             totalDistance += (rowExpansionsNeeded * expansionRatio)
             totalDistance += (columnExpansionsNeeded * expansionRatio)
-            if(expansionRatio > 1) {
-                totalDistance -= (rowExpansionsNeeded + columnExpansionsNeeded)
-            }
         }
     }
     return totalDistance
@@ -61,5 +58,5 @@ function calculateTotalDistance(galaxies, expansionRatio) {
 galaxies = locateGalaxies(data)
 
 console.log(`Part 1: ${calculateTotalDistance(galaxies, 1)}`)
-console.log(`Part 2: ${calculateTotalDistance(galaxies, 1000000)}`)
+console.log(`Part 2: ${calculateTotalDistance(galaxies, 999999)}`)
 
