@@ -1,30 +1,53 @@
-utils = require('../utils.js')
+utils = require("../utils.js");
 
-data = utils.fileToArray("sample.txt")
-        .map(line => line.split(""))
+data = utils
+  .fileToArray("sample.txt")
+  .map((line) => line.split(" "))
+  .map((line) => [line[0], JSON.parse(`[${line[1]}]`)]);
 
-console.log(data)
+console.log("?".match(new RegExp("[#\\?]")));
 
-console.log(`Part 1: ${""}`)
+function validCombinations(row) {
+      console.log(row);
+      //regex = "";
+      //for (x of row[1]) {
+      //  console.log(x);
+      //  if (regex.length > 0) {
+      //    regex += "[.\\?]+";
+      //  }
+      //  for (i = 0; i < x; i++) {
+      //    regex += "[#\\?]";
+      //  }
+      //}
+    regex = "(?<!#)" + row[1].map(x => `[#\\?]{${x}}`).join("\.+") + "[$\\.]"
+     console.log(regex);
+regex = new RegExp(`${regex}`);
 
-const characters = ["a", "b", "c", "d"];
+      toTry = [];
 
-function combinations(arr, min = 1, max) {
-  const combination = (arr, depth) => {
-    if (depth === 1) {
-      return arr;
-    } else {
-      const result = combination(arr, depth - 1).flatMap((val) =>
-        arr.map((char) => val + char)
-      );
-      return arr.concat(result);
-    }
-  };
-
-  return combination(arr, max).filter((val) => val.length >= min);
+      toTry.push(row[0])
+        console.log(toTry)
+      combinations = []
+      while (toTry.length > 0) {
+            current = toTry.shift();
+        console.log("Attempting: " + current)
+            if (current.match(regex)) {
+          if (current.indexOf("?") < 0) {
+            combinations.push(current);
+          } else {
+            toTry.push(current.replace("?", "#"));
+            toTry.push(current.replace("?", "."));
+          }
+        }
+      }
+    return combinations
 }
-const result = combinations(characters, 4, 4);
+
+//part1 = data.map(validCombinations)
+console.log(validCombinations(data[1]))
+//console.log(part1)
+console.log(`Part 1: ${""}`);
 
 //console.log(`Combinations: ${result.length}`, result);
 
-console.log(`Part 2: ${""}`)
+console.log(`Part 2: ${""}`);
