@@ -1,11 +1,7 @@
-const { maxHeaderSize } = require('http')
-
 utils = require('../utils.js')
 
-data = utils.fileToArray("sample.txt")
+data = utils.fileToArray("input.txt")
     .map(line => line.split(""))
-
-console.log(data)
 
 movedARock = true
 
@@ -22,8 +18,9 @@ while(movedARock) {
     }
 }
 
-data.forEach(row => console.log(row.join("")))
-
-part1 = ""
+part1 = 0
+for(i=0;i<data.length;i++) {
+    part1 += (data.length - i) * data[i].filter(x => x == "O").length
+}
 
 console.log(`Part 1: ${part1}`)
